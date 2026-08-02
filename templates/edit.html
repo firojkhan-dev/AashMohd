@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Record - As Mohammad Business</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f8fafc; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .edit-card { background: white; padding: 25px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 450px; }
+        h2 { margin-bottom: 20px; color: #0f172a; font-size: 20px; text-align: center; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; color: #334155; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; box-sizing: border-box; }
+        .btn-group { display: flex; gap: 10px; margin-top: 20px; }
+        .update-btn { flex: 1; background: #2563eb; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 15px; cursor: pointer; font-weight: bold; }
+        .cancel-btn { flex: 1; background: #64748b; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 15px; text-decoration: none; text-align: center; font-weight: bold; display: block; line-height: 20px; }
+    </style>
+</head>
+<body>
+    <div class="edit-card">
+        <h2>✏️ Edit Record</h2>
+        <form method="POST">
+            <div class="form-group">
+                <label>Date:</label>
+                <input type="date" name="date" value="{{ item.date }}" required>
+            </div>
+            <div class="form-group">
+                <label>Type:</label>
+                <select name="type" required>
+                    <option value="Income" {% if item.type == 'Income' %}selected{% endif %}>Income</option>
+                    <option value="Expense" {% if item.type == 'Expense' %}selected{% endif %}>Expense</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Party Name:</label>
+                <input type="text" name="party_name" value="{{ item.party_name }}" required>
+            </div>
+            <div class="form-group">
+                <label>Quantity:</label>
+                <input type="text" name="quantity" value="{{ item.quantity }}">
+            </div>
+            <div class="form-group">
+                <label>Amount (Rs):</label>
+                <input type="number" step="any" name="amount" value="{{ item.amount }}" required>
+            </div>
+            <div class="btn-group">
+                <button type="submit" class="update-btn">Update</button>
+                <a href="/" class="cancel-btn">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
